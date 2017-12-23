@@ -15,9 +15,7 @@ ADD mongod.conf /etc/mongod.conf
 
 # ++ Mysql 5.7 install
 
-RUN echo "mysql-server mysql-server/root_password password" | debconf-set-selections && \
-    echo "mysql-server mysql-server/root_password_again password" | debconf-set-selections && \
-    apt install -y mysql-server
+RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server
 
 RUN sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 

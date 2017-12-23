@@ -13,17 +13,39 @@ VOLUME /var/lib/mongodb
 EXPOSE 27017
 ADD mongod.conf /etc/mongod.conf
 
-# -- Mysql install
+# ++ Mysql 5.7 install
 
+RUN echo "mysql-server mysql-server/root_password password" | debconf-set-selections && \
+    echo "mysql-server mysql-server/root_password_again password" | debconf-set-selections && \
+    apt install -y mysql-server
 
+RUN sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
-# -- PHP CLI install 
+VOLUME /var/lib/mysql/
+EXPOSE 3306
 
-# -- snmpd install
+# ++ PHP7.0-cli install 
 
-# -- crons support
+RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php-mongodb curl
 
+RUN mkdir -p /var/app/
+VOLUME /var/app/
 
+# ++ snmpd install
 
+RUN apt update && apt install -y snmpd
+RUN echo "rocommunity public 127.0.0.1" > /etc/snmp/snmpd.conf
+RUN sed -i 's/snmpd.pid/snmpd.pid -c \/etc\/snmp\/snmpd.conf/' /etc/default/snmpd
+
+VOLUME /etc/snmp/
+
+# ++ crons support
+RUN apt update && apt install -y cron
+RUN touch /etc/cron.d/app
+RUN chmod 0644 /etc/cron.d/app
+
+VOLUME /etc/cron.d/
+
+# ++ run all necessary daemons
 ADD run.sh /run.sh
 CMD ["/run.sh"]

@@ -37,6 +37,7 @@ RUN echo "rocommunity public 127.0.0.1" > /etc/snmp/snmpd.conf
 RUN sed -i 's/snmpd.pid/snmpd.pid -c \/etc\/snmp\/snmpd.conf/' /etc/default/snmpd
 
 VOLUME /etc/snmp/
+EXPOSE 161/udp
 
 # ++ crons support
 RUN apt update && apt install -y cron

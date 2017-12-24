@@ -2,3 +2,22 @@
 
 FROM ubuntu:16.04
 
+# ++ install 
+RUN apt update && nginx php7.0-fpm php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php-mongodb curl
+
+# ++ config
+RUN mkdir -p /var/www/app/web/
+RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php/7.0/fpm/php.ini
+COPY default /etc/nginx/sites-available/default
+
+# ++ volumes
+RUN mkdir -p /var/www/app/web/
+RUN mkdir -p /var/www/log/
+VOLUME /var/www/app/
+VOLUME /var/www/log/
+
+# ++ ports
+EXPOSE 80
+
+# ++ entry script
+CMD ["/run.sh"]

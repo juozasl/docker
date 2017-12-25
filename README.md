@@ -7,7 +7,7 @@ Docker containers
 
 *Sample command:*
 ```
-docker run --name=dbhost -d juozasl/docker:dbhost
+docker run --name=dbhost -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:dbhost
 ```
 
 - **mongodb** - Ubuntu 16.04, MongoDB 3.6;

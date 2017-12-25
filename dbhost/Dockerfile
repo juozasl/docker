@@ -9,7 +9,6 @@ FROM ubuntu:16.04
 RUN apt update && apt install -y supervisor
 COPY supervisor/* /etc/supervisor/conf.d/
 
-
 # ++ Mongodb install
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
@@ -22,7 +21,7 @@ EXPOSE 27017
 
 # ++ Mysql 5.7 install
 
-RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server
+RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client
 
 RUN sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 

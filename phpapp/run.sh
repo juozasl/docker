@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# -- permissions
+# ++ permissions
 
-# www
-# log
+chown -R www-data:www-data /var/www
 
-# -- run daemons
+# ++ run daemons
+
+services nginx restart

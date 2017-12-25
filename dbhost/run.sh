@@ -9,6 +9,5 @@ fi
 
 chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 
-
 # super visor deamons start
-exec /usr/bin/supervisord --nodaemon -c /etc/supervisor/supervisord.conf
+exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

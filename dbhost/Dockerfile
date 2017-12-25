@@ -4,6 +4,12 @@ FROM ubuntu:16.04
 
 #ENV DEBIAN_FRONTEND noninteractive
 
+# ++ Supervisor install
+
+RUN apt update && apt install -y supervisor
+COPY supervisor /etc/supervisor/conf.d/
+
+
 # ++ Mongodb install
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
@@ -48,4 +54,4 @@ VOLUME /etc/cron.d/
 
 # ++ run all necessary daemons
 ADD run.sh /run.sh
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]

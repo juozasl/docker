@@ -1,3 +1,4 @@
 #!/bin/bash
 
-exec /usr/bin/mongod --config /etc/mongod.conf
+# super visor deamons start
+exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

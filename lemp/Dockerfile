@@ -14,7 +14,6 @@ COPY supervisor/* /etc/supervisor/conf.d/
 RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client
 
 VOLUME /var/lib/mysql
-EXPOSE 3306
 
 # ++ www server install 
 RUN apt update && apt install -y nginx php7.0-fpm php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php-mongodb curl

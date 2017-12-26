@@ -6,10 +6,8 @@ set -e
 
 # init mysql db if necessary
 if [ ! -d /var/lib/mysql/mysql ];then
-    mysqld --initialize-insecure --user=root --datadir=/var/lib/mysql
+    dpkg-reconfigure mysql-server-5.7
 fi
-
-chown -R mysql:mysql /var/lib/mysql 
 
 mkdir -p /var/run/mysqld/
 chown -R mysql:mysql /var/run/mysqld 

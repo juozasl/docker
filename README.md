@@ -31,11 +31,15 @@ docker run --name=mongodb \
     -d juozasl/docker:mongodb
 ```
 
-- **phpapp** - Ubuntu 16.04, Nginx, PHP7.0, php-mongodb.
+- **phpapp** - Ubuntu 16.04, Nginx, PHP7.0, php-mongodb, php-mysql.
 
 *Sample command:*
 ```
-docker run --name=phpapp -d juozasl/docker:phpapp
+docker run --name=phpapp \
+    -v /home/app/:/var/www/app \
+    -v /home/log/:/var/www/log \
+    -p 80:80 \
+    -d juozasl/docker:phpapp
 ```
 
 - **lemp** - Ubuntu 16.04, Nginx, PHP7.0, PHP7.0-cli, Mysql 5.7, php-mongodb, snmpd, cron support.

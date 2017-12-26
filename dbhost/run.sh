@@ -7,7 +7,10 @@ if [ ! -d /var/lib/mysql/mysql ];then
     mysqld --initialize-insecure --user=root --datadir=/var/lib/mysql
 fi
 
-chown -R mysql:mysql /var/lib/mysql
+chown -R mysql:mysql /var/lib/mysql 
+
+mkdir -p /var/run/mysqld/
+chown -R mysql:mysql /var/run/mysqld 
 
 service mysql start
 

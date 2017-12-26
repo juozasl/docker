@@ -7,7 +7,14 @@ FROM ubuntu:16.04
 RUN apt update && apt install -y supervisor
 COPY supervisor/* /etc/supervisor/conf.d/
 
-# ++ install 
+# ++ Mysql 5.7
+
+RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client
+
+VOLUME /var/lib/mysql
+EXPOSE 3306
+
+# ++ www server install 
 RUN apt update && apt install -y nginx php7.0-fpm php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php-mongodb curl
 
 # ++ config
@@ -20,14 +27,6 @@ VOLUME /var/www/log/
 
 # ++ ports
 EXPOSE 80
-
-
-# ++ Mysql 5.7
-
-RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client
-
-VOLUME /var/lib/mysql
-EXPOSE 3306
 
 # ++ snmpd install
 

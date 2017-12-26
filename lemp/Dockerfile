@@ -2,6 +2,8 @@
 
 FROM ubuntu:16.04
 
+#ENV DEBIAN_FRONTEND noninteractive
+
 # ++ Supervisor install
 
 RUN apt update && apt install -y supervisor
@@ -46,5 +48,5 @@ VOLUME /etc/cron.d/
 
 # ++ run all necessary daemons
 ADD run.sh /run.sh
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]
 

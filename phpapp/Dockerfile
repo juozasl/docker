@@ -23,4 +23,4 @@ EXPOSE 80
 
 # ++ entry script
 ADD run.sh /run.sh
-CMD ["/run.sh"]
+ENTRYPOINT ["/run.sh"]

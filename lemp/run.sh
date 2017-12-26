@@ -62,6 +62,17 @@ chown -R www-data:www-data /var/www
 service php7.0-fpm start
 service php7.0-fpm stop
 
+# initialize snmpd.conf file if not exist
+if [ ! -f /etc/snmp/snmpd.conf ]; then
+    echo "rocommunity public 127.0.0.1" > /etc/snmp/snmpd.conf
+fi
+
+# cron file initialize if not exist
+if [ ! -f /etc/cron.d/app ]; then
+    touch /etc/cron.d/app
+    chmod 0644 /etc/cron.d/app
+fi
+
 # super visor deamons start
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
 

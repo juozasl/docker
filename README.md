@@ -42,11 +42,19 @@ docker run --name=phpapp \
     -d juozasl/docker:phpapp
 ```
 
-- **lemp** - Ubuntu 16.04, Nginx, PHP7.0, PHP7.0-cli, Mysql 5.7, php-mongodb, snmpd, cron support.
+- **lemp** - Ubuntu 16.04, Nginx, PHP7.0-fpm, PHP7.0-cli, Mysql 5.7, php-mysql, php-mongodb, snmpd, cron support.
 
 *Sample command:*
 ```
-docker run --name=lemp -d juozasl/docker:lemp
+docker run --name=lemp \
+    -v /home/mysql/:/var/lib/mysql \
+    -v /home/app/:/var/www/app \
+    -v /home/log/:/var/www/log \
+    -v /home/snmp/:/etc/snmp \
+    -v /home/cron/:/etc/cron.d \
+    -p 161:161 \
+    -p 80:80 \
+    -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:lemp
 ```
 
 **Automated builds on:**

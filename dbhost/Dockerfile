@@ -16,6 +16,7 @@ RUN echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mon
 RUN apt update && apt install -y mongodb-org
 RUN sed -i 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/' /etc/mongod.conf
 
+VOLUME /var/log/mongodb
 VOLUME /var/lib/mongodb
 EXPOSE 27017
 

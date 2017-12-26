@@ -9,6 +9,7 @@ Docker containers
 ```
 docker run --name=dbhost \
     -v /home/mongodb/:/var/lib/mongodb \
+    -v /home/mongodb_log/:/var/log/mongodb \
     -v /home/mysql/:/var/lib/mysql \
     -v /home/app/:/var/app \
     -v /home/snmp/:/etc/snmp \
@@ -24,7 +25,8 @@ docker run --name=dbhost \
 *Sample command:*
 ```
 docker run --name=mongodb \
-    -v /db/:/var/lib/mongodb \
+    -v /home/mongodb/:/var/lib/mongodb \
+    -v /home/mongodb_log/:/var/log/mongodb \
     -p 21017:27017 \
     -d juozasl/docker:mongodb
 ```

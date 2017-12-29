@@ -19,6 +19,7 @@ docker run --name=dbhost \
     -p 161:161 \
     -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:dbhost
 ```
+*If you will not specify 'DB_NAME' then your 'DB_USER' will be granted for all databases (as root).*
 
 - **mongodb** - Ubuntu 16.04, MongoDB 3.6;
 

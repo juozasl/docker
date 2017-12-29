@@ -31,7 +31,7 @@ EXPOSE 3306
 
 # ++ PHP7.0-cli install 
 
-RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php-mongodb curl
+RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php7.0-zip php-mongodb curl
 
 RUN mkdir -p /var/app/
 VOLUME /var/app

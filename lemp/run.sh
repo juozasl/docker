@@ -40,16 +40,16 @@ if [ -n "${DB_USER}" -o -n "${DB_NAME}" ]; then
     if [ -n "${DB_NAME}" ]; then
         for db in $(awk -F',' '{for (i = 1 ; i <= NF ; i++) print $i}' <<< "${DB_NAME}"); do
         echo "Creating database \"$db\"..."
-        mysql --defaults-file=/etc/mysql/debian.cnf \
+        mysql \
             -e "CREATE DATABASE IF NOT EXISTS \`$db\` DEFAULT CHARACTER SET \`$MYSQL_CHARSET\` COLLATE \`$MYSQL_COLLATION\`;"
             if [ -n "${DB_USER}" ]; then
             echo "Granting access to database \"$db\" for user \"${DB_USER}\"..."
-            mysql --defaults-file=/etc/mysql/debian.cnf \
+            mysql \
             -e "GRANT ALL PRIVILEGES ON \`$db\`.* TO '${DB_USER}' IDENTIFIED BY '${DB_PASS}';"
             fi
         done
     fi
-    /usr/bin/mysqladmin --defaults-file=/etc/mysql/debian.cnf shutdown
+    /usr/bin/mysqladmin shutdown
 fi
 
 service mysql stop

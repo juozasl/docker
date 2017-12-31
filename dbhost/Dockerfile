@@ -20,6 +20,8 @@ VOLUME /var/log/mongodb
 VOLUME /var/lib/mongodb
 EXPOSE 27017
 
+ADD set_mongo_auth.sh /set_mongo_auth.sh
+
 # ++ Mysql 5.7 install
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client

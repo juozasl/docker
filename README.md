@@ -17,9 +17,11 @@ docker run --name=dbhost \
     -p 21017:27017 \
     -p 3306:3306 \
     -p 161:161 \
-    -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:dbhost
+    -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' -e 'MONGODB_USER=dbuser' -e 'MONGODB_PASS=dbpass' juozasl/docker:dbhost
 ```
-*If you will not specify 'DB_NAME' then your 'DB_USER' will be granted for all databases (as root).*
+*If you will not set 'DB_NAME' then your 'DB_USER' will be granted for all databases (as root).*
+
+*If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*
 
 - **mongodb** - Ubuntu 16.04, MongoDB 3.6;
 
@@ -31,7 +33,7 @@ docker run --name=mongodb \
     -p 21017:27017 \
     -d -e 'MONGODB_USER=dbuser' -e 'MONGODB_PASS=dbpass' juozasl/docker:mongodb
 ```
-*If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentifiction.*
+*If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*
 
 - **phpapp** - Ubuntu 16.04, Nginx, PHP7.0, php-mongodb, php-mysql.
 

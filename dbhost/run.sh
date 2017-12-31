@@ -2,6 +2,11 @@
 
 set -e
 
+# configure mongo authentification
+if [ ! -f /var/lib/mongodb/.mongodb_configured ]; then
+    /set_mongo_auth.sh
+fi
+
 # init mysql db if necessary
 if [ ! -d /var/lib/mysql/mysql ];then
     dpkg-reconfigure mysql-server-5.7

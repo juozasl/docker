@@ -2,7 +2,7 @@
 
 set -e
 
-# configure authentification
+# configure mongo authentification
 if [ ! -f /var/lib/mongodb/.mongodb_configured ]; then
     /set_mongo_auth.sh
 fi

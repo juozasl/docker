@@ -46,7 +46,7 @@ VOLUME /etc/snmp
 EXPOSE 161/udp
 
 # ++ crons support
-RUN apt update && apt install -y cron
+RUN apt update && apt install -y cron run-one
 RUN touch /etc/cron.d/app
 RUN chmod 0644 /etc/cron.d/app
 

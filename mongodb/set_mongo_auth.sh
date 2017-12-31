@@ -31,6 +31,4 @@ if [ -n "${MONGODB_USER}" -a -n "${MONGODB_PASS}" ]; then
     
 fi
 
-
-
 touch /root/.mongodb_configured

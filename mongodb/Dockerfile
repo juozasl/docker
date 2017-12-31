@@ -15,6 +15,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF505
 
 RUN echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
+# ++ config
 RUN apt update && apt install -y mongodb-org
 RUN sed -i 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/' /etc/mongod.conf
 
@@ -23,6 +24,7 @@ VOLUME /var/lib/mongodb
 
 EXPOSE 27017
 
+ADD set_mongo_auth.sh /set_mongo_auth.sh
 ADD run.sh /run.sh
 
 CMD ["/run.sh"]

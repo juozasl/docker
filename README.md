@@ -29,8 +29,9 @@ docker run --name=mongodb \
     -v /home/mongodb/:/var/lib/mongodb \
     -v /home/mongodb_log/:/var/log/mongodb \
     -p 21017:27017 \
-    -d juozasl/docker:mongodb
+    -d -e 'MONGODB_USER=dbuser' -e 'MONGODB_PASS=dbpass' juozasl/docker:mongodb
 ```
+*If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentifiction.*
 
 - **phpapp** - Ubuntu 16.04, Nginx, PHP7.0, php-mongodb, php-mysql.
 

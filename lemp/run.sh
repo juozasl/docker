@@ -79,5 +79,7 @@ if [ ! -f /var/www/app/web/index.php ]; then
 fi
 
 # super visor deamons start
-exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
 
+# go to foreground
+fg

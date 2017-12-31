@@ -8,6 +8,9 @@ MONGODB_PASS=${MONGODB_PASS:-}
 
 if [ -n "${MONGODB_USER}" -a -n "${MONGODB_PASS}" ]; then
 
+    # ++ run temporary mongo process
+    /usr/bin/mongod --config /etc/mongod.conf &
+
     # ++ check if mongodb started
     RET=1
     while [[ RET -ne 0 ]]; do
@@ -26,9 +29,9 @@ if [ -n "${MONGODB_USER}" -a -n "${MONGODB_PASS}" ]; then
     # ++ add authentication config to mongo config file
     sed -i 's/#security:/security:\n  authorization: "enabled"/' /etc/mongod.conf
 
-    # ++ restart mongodb server
-    supervisorctl restart mongodb
+    # ++ stop temporary mongodb process
+    mongod --dbpath /var/lib/mongodb/ --shutdown
     
 fi
 
-touch /root/.mongodb_configured
+echo  "done" > /var/lib/mongodb/.mongodb_configured

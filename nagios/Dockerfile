@@ -71,6 +71,8 @@ RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 ADD localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
 RUN cp -r /usr/local/nagios/etc/ /usr/local/nagios/etc1/
 
+RUN rm /var/www/html/index.html
+RUN echo "<?php header('Location: nagios/'); exit; ?>" > /var/www/html/index.php
 
 VOLUME /usr/local/nagios/etc/
 EXPOSE 80

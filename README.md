@@ -84,6 +84,7 @@ Ubuntu 16.04, Nagios 4.3.4, Nagios-Plugins 2.2.1, Apache2
 *Sample command:*
 ```
 docker run --name=nagios \
+    -v /home/nagios/:/usr/local/nagios/etc \
     -p 80:80 \
     -d -e 'ADMIN_EMAIL=admin@localhost' -e 'NAGIOS_PASS=pass' juozasl/docker:nagios
 ```

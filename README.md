@@ -75,6 +75,25 @@ docker run --name=lemp \
     -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:lemp
 ```
 
-**Automated builds on:**
+## nagios
+
+*Packages:*
+
+Ubuntu 16.04, Nagios 4.3.4, Nagios-Plugins 2.2.1, Apache2
+
+*Sample command:*
+```
+docker run --name=nagios \
+    -p 80:80 \
+    -d -e 'ADMIN_EMAIL=admin@localhost' -e 'NAGIOS_PASS=pass' juozasl/docker:nagios
+```
+*Nagios admin username: nagiosadmin*
+
+
+
+- - -
+
+
+**All automated builds on:**
 
 https://hub.docker.com/r/juozasl/docker/

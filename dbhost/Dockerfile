@@ -31,6 +31,8 @@ RUN sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 VOLUME /var/lib/mysql
 EXPOSE 3306
 
+ADD set_mysql_auth.sh /set_mysql_auth.sh
+
 # ++ PHP7.0-cli install 
 
 RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php7.0-zip php7.0-xmlrpc php7.0-xml php-mongodb curl

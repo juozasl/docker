@@ -15,6 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y mysql-server mysql-client
 
 VOLUME /var/lib/mysql
 
+ADD set_mysql_auth.sh /set_mysql_auth.sh
+
 # ++ www server install 
 RUN apt update && apt install -y nginx php7.0-fpm php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-zip php7.0-xmlrpc php7.0-xml php7.0-curl php-mongodb curl
 

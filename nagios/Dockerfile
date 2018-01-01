@@ -3,7 +3,7 @@
 FROM ubuntu:16.04
 
 ENV ADMIN_EMAIL            admin@localhost
-ENV NAGIOS_PASS            pass
+ENV NAGIOS_PASS            nagiospassword
 
 # ++ Supervisor install
 
@@ -21,7 +21,8 @@ RUN apt install -y \
     php-gd \
     libgd-dev \
     sendmail \
-    unzip
+    unzip \
+    iputils-ping
 
 RUN useradd nagios && \
     groupadd nagcmd && \
@@ -67,7 +68,9 @@ RUN a2enmod rewrite && a2enmod cgi
 
 RUN htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin $NAGIOS_PASS 
 RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
+ADD localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
 RUN cp -r /usr/local/nagios/etc/ /usr/local/nagios/etc1/
+
 
 VOLUME /usr/local/nagios/etc/
 EXPOSE 80

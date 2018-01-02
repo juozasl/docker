@@ -14,13 +14,9 @@ if [ ! -f /usr/local/nagios/etc/nagios.cfg ];then
 
 fi
 
-# if password is not setuped
-if [ ! -f /usr/local/nagios/etc/htpasswd.users ];then
-    
-    # Password setup
-    htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin $NAGIOS_PASS
+# Password setup
+htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin $NAGIOS_PASS
 
-fi
 
 chown -R nagios:nagios /usr/local/nagios/etc 
 

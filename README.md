@@ -1,6 +1,3 @@
-Docker containers
-===================
-
 ## dbhost
 
 *Packages:*

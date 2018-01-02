@@ -16,7 +16,12 @@ docker run --name=dbhost \
     -p 21017:27017 \
     -p 3306:3306 \
     -p 161:161 \
-    -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' -e 'MONGODB_USER=dbuser' -e 'MONGODB_PASS=dbpass' juozasl/docker:dbhost
+    -d -e 'DB_USER=dbuser' \
+    -e 'DB_PASS=dbpass' \
+    -e 'DB_NAME=dbname' \
+    -e 'MONGODB_USER=dbuser' \
+    -e 'MONGODB_PASS=dbpass' \
+    juozasl/docker:dbhost
 ```
 *If you will not set 'DB_NAME' then your 'DB_USER' will be granted for all databases (as root).*
 
@@ -34,7 +39,9 @@ docker run --name=mongodb \
     -v /home/mongodb/:/var/lib/mongodb \
     -v /home/mongodb_log/:/var/log/mongodb \
     -p 21017:27017 \
-    -d -e 'MONGODB_USER=dbuser' -e 'MONGODB_PASS=dbpass' juozasl/docker:mongodb
+    -d -e 'MONGODB_USER=dbuser' \
+    -e 'MONGODB_PASS=dbpass' \
+    juozasl/docker:mongodb
 ```
 *If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*
 
@@ -69,7 +76,10 @@ docker run --name=lemp \
     -v /home/cron/:/etc/cron.d \
     -p 161:161 \
     -p 80:80 \
-    -d -e 'DB_USER=dbuser' -e 'DB_PASS=dbpass' -e 'DB_NAME=dbname' juozasl/docker:lemp
+    -d -e 'DB_USER=dbuser' \
+    -e 'DB_PASS=dbpass' \
+    -e 'DB_NAME=dbname' \
+    juozasl/docker:lemp
 ```
 
 ## nagios
@@ -83,7 +93,9 @@ Ubuntu 16.04, Nagios 4.3.4, Nagios-Plugins 2.2.1, Apache2
 docker run --name=nagios \
     -v /home/nagios/:/usr/local/nagios/etc \
     -p 80:80 \
-    -d -e 'ADMIN_EMAIL=admin@localhost' -e 'NAGIOS_PASS=password' juozasl/docker:nagios
+    -d -e 'ADMIN_EMAIL=admin@localhost' \
+    -e 'NAGIOS_PASS=password' \
+    juozasl/docker:nagios
 ```
 *Nagios admin username: nagiosadmin*
 

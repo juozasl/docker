@@ -55,6 +55,17 @@ RUN cd /root/ && \
     rm -rf nagios-4.3.4/ && \
     rm -rf nagios-plugins-2.2.1/
 
+# ADD additional plugins
+ADD files/check_snmp_extend.sh /usr/local/nagios/libexec/check_snmp_extend.sh
+ADD files/check_snmp_load.pl /usr/local/nagios/libexec/check_snmp_load.pl
+ADD files/check_snmp_mem.pl /usr/local/nagios/libexec/check_snmp_mem.pl
+ADD files/check_snmp_storage.pl /usr/local/nagios/libexec/check_snmp_storage.pl
+
+RUN chown nagios:nagios /usr/local/nagios/libexec/*.sh && \
+    chown nagios:nagios /usr/local/nagios/libexec/*.pl && \
+    chmod 0777 /usr/local/nagios/libexec/*.sh && \
+    chmod 0777 /usr/local/nagios/libexec/*.pl
+
 RUN sed -i 's/#cfg_dir=\/usr\/local\/nagios\/etc\/servers/cfg_dir=\/usr\/local\/nagios\/etc\/servers/' /usr/local/nagios/etc/nagios.cfg
 
 RUN mkdir -p /usr/local/nagios/etc/servers
@@ -62,7 +73,7 @@ RUN mkdir -p /usr/local/nagios/etc/servers
 RUN a2enmod rewrite && a2enmod cgi
 
 RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
-ADD localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
+ADD files/localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
 RUN cp -r /usr/local/nagios/etc/ /usr/local/nagios/etc1/
 
 RUN rm /var/www/html/index.html

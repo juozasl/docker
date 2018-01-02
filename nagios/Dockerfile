@@ -2,9 +2,6 @@
 
 FROM ubuntu:16.04
 
-ENV ADMIN_EMAIL            admin@localhost
-ENV NAGIOS_PASS            nagiospassword
-
 # ++ Supervisor install
 
 RUN apt update && apt install -y supervisor
@@ -60,13 +57,10 @@ RUN cd /root/ && \
 
 RUN sed -i 's/#cfg_dir=\/usr\/local\/nagios\/etc\/servers/cfg_dir=\/usr\/local\/nagios\/etc\/servers/' /usr/local/nagios/etc/nagios.cfg
 
-RUN sed -i 's/nagios@localhost/'$ADMIN_EMAIL'/' /usr/local/nagios/etc/objects/contacts.cfg
-
 RUN mkdir -p /usr/local/nagios/etc/servers
 
 RUN a2enmod rewrite && a2enmod cgi
 
-RUN htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin $NAGIOS_PASS 
 RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 ADD localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
 RUN cp -r /usr/local/nagios/etc/ /usr/local/nagios/etc1/

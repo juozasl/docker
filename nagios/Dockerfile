@@ -19,7 +19,8 @@ RUN apt install -y \
     libgd-dev \
     sendmail \
     unzip \
-    iputils-ping
+    iputils-ping \
+    libnet-snmp-perl
 
 RUN useradd nagios && \
     groupadd nagcmd && \

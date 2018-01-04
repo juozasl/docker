@@ -20,7 +20,8 @@ RUN apt install -y \
     sendmail \
     unzip \
     iputils-ping \
-    libnet-snmp-perl
+    libnet-snmp-perl \
+    snmp
 
 RUN useradd nagios && \
     groupadd nagcmd && \

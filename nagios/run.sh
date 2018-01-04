@@ -2,8 +2,8 @@
 
 set -e
 
-NAGIOS_PASS=${NAGIOS_PASS:-"admin@localhost"}
-ADMIN_EMAIL=${ADMIN_EMAIL:-"nagiospassword"}
+ADMIN_EMAIL=${ADMIN_EMAIL:-"admin@localhost"}
+NAGIOS_PASS=${NAGIOS_PASS:-"nagiospassword"}
 
 # if the directory is mounted to your local path
 if [ ! -f /usr/local/nagios/etc/nagios.cfg ];then

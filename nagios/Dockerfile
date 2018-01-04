@@ -21,7 +21,8 @@ RUN apt install -y \
     unzip \
     iputils-ping \
     libnet-snmp-perl \
-    snmp
+    snmp \
+    snmp-mibs-downloader
 
 RUN useradd nagios && \
     groupadd nagcmd && \

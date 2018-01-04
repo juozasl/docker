@@ -31,7 +31,7 @@ docker run --name=dbhost \
 
 *Packages:*
 
-Ubuntu 16.04, MongoDB 3.6;
+Ubuntu 16.04, MongoDB 3.6, snmpd;
 
 *Sample command:*
 ```
@@ -49,7 +49,7 @@ docker run --name=mongodb \
 
 *Packages:*
 
-Ubuntu 16.04, Nginx, PHP7.0, php-mongodb, php-mysql.
+Ubuntu 16.04, Nginx, PHP7.0, php-mongodb, php-mysql, snmpd.
 
 *Sample command:*
 ```

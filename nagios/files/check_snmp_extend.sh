@@ -50,8 +50,8 @@
 # Enjoy!
 # Michal Ludvig
 
-#. /usr/local/nagios/libexec/utils.sh || exit 3
-. /usr/lib/nagios/plugins/utils.sh || exit 3
+. /usr/local/nagios/libexec/utils.sh || exit 3
+#. /usr/lib/nagios/plugins/utils.sh || exit 3
 
 SNMPGET=$(which snmpget)
 

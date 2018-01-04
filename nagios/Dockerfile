@@ -62,6 +62,8 @@ ADD files/check_snmp_load.pl /usr/local/nagios/libexec/check_snmp_load.pl
 ADD files/check_snmp_mem.pl /usr/local/nagios/libexec/check_snmp_mem.pl
 ADD files/check_snmp_storage.pl /usr/local/nagios/libexec/check_snmp_storage.pl
 
+ADD files/checksupervisor.sh /usr/local/nagios/libexec/checksupervisor.sh
+
 RUN chown nagios:nagios /usr/local/nagios/libexec/*.sh && \
     chown nagios:nagios /usr/local/nagios/libexec/*.pl && \
     chmod 0777 /usr/local/nagios/libexec/*.sh && \

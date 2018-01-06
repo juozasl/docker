@@ -32,6 +32,8 @@ ADD files/checksupervisor.sh /usr/local/bin/checksupervisor.sh
 VOLUME /etc/snmp/
 EXPOSE 161/udp
 
+WORKDIR /var/www/app
+
 # ++ entry script
 ADD run.sh /run.sh
 ENTRYPOINT ["/run.sh"]

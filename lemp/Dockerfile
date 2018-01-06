@@ -22,6 +22,7 @@ RUN apt update && apt install -y nginx php7.0-fpm php7.0-cli php7.0-mysql php7.0
 
 # ++ config
 RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php/7.0/fpm/php.ini
+RUN sed -i 's/max_execution_time = 30/max_execution_time = 0/' /etc/php/7.0/cli/php.ini
 COPY default /etc/nginx/sites-available/default
 
 # ++ volumes

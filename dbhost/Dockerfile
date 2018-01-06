@@ -37,6 +37,8 @@ ADD set_mysql_auth.sh /set_mysql_auth.sh
 
 RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-mysql php7.0-curl php7.0-zip php7.0-xmlrpc php7.0-xml php-mongodb curl
 
+RUN sed -i 's/max_execution_time = 30/max_execution_time = 0/' /etc/php/7.0/cli/php.ini
+
 RUN mkdir -p /var/app/
 VOLUME /var/app
 

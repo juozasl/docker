@@ -50,6 +50,8 @@ RUN chmod 0644 /etc/cron.d/app
 
 VOLUME /etc/cron.d/
 
+WORKDIR /var/www/app
+
 # ++ run all necessary daemons
 ADD run.sh /run.sh
 ENTRYPOINT ["/run.sh"]

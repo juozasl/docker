@@ -9,7 +9,7 @@ COPY supervisor/* /etc/supervisor/conf.d/
 
 # ++ nagios server install
 
-RUN apt install -y \
+RUN apt update && apt install -y \
     wget \
     build-essential \
     apache2 \

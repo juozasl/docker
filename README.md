@@ -57,7 +57,8 @@ docker run --name=phpapp \
     -v /home/app/:/var/www/app \
     -v /home/log/:/var/www/log \
     -p 80:80 \
-    -d juozasl/docker:phpapp
+    -d -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    juozasl/docker:phpapp
 ```
 
 ## lemp
@@ -79,6 +80,7 @@ docker run --name=lemp \
     -d -e 'DB_USER=dbuser' \
     -e 'DB_PASS=dbpass' \
     -e 'DB_NAME=dbname' \
+    -e 'NGINX_REALIP_PROXY=172.17.0.1 \
     juozasl/docker:lemp
 ```
 

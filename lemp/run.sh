@@ -24,7 +24,7 @@ fi
 mkdir -p /var/www/app/web/
 mkdir -p /var/www/log/
 chown -R www-data:www-data /var/www
-RUN sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
+sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
 service php7.0-fpm start
 service php7.0-fpm stop
 

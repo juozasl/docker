@@ -12,6 +12,8 @@ docker build -t lemp:local lemp/
 
 docker build -t nagios:local nagios/
 
+docker build -t gemp:local gemp/
+
 
 
 

@@ -84,6 +84,30 @@ docker run --name=lemp \
     juozasl/docker:lemp
 ```
 
+## gemp
+
+*Packages:*
+
+Ubuntu 16.04, Nginx, PHP7.0-fpm, PHP7.0-cli, MongoDB 3.6, php-mongodb, snmpd, cron support.
+
+*Sample command:*
+```
+docker run --name=gemp \
+    -v /home/mongodb/:/var/lib/mongodb \
+    -v /home/mongodb_log/:/var/log/mongodb \
+    -v /home/app/:/var/www/app \
+    -v /home/log/:/var/www/log \
+    -v /home/snmp/:/etc/snmp \
+    -v /home/cron/:/etc/cron.d \
+    -p 21017:27017 \
+    -p 161:161 \
+    -p 80:80 \
+    -d -e 'MONGODB_USER=dbuser' \
+    -e 'MONGODB_PASS=dbpass' \
+    -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    juozasl/docker:gemp
+```
+
 ## nagios
 
 *Packages:*

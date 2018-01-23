@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+# configure mongo authentification
+if [ ! -f /var/lib/mongodb/.mongodb_configured ]; then
+    /set_mongo_auth.sh
+fi
+
+# initialize snmpd.conf file if not exist
+if [ ! -f /etc/snmp/snmpd.conf ]; then
+    echo "rocommunity public 127.0.0.1" > /etc/snmp/snmpd.conf
+fi
+
+# cron file initialize if not exist
+if [ ! -f /etc/cron.d/app ]; then
+    touch /etc/cron.d/app
+    chmod 0644 /etc/cron.d/app
+fi
+
+# super visor deamons start
+exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

@@ -27,6 +27,32 @@ docker run --name=dbhost \
 
 *If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*
 
+## dbhost2
+
+*Packages:*
+
+Ubuntu 16.04, MongoDB 3.6, PHP7.0-cli, snmpd, crons support;
+
+*Sample command:*
+```
+docker run --name=dbhost \
+    -v /home/mongodb/:/var/lib/mongodb \
+    -v /home/mongodb_log/:/var/log/mongodb \
+    -v /home/app/:/var/app \
+    -v /home/snmp/:/etc/snmp \
+    -v /home/cron/:/etc/cron.d \
+    -p 21017:27017 \
+    -p 3306:3306 \
+    -p 161:161 \
+    -d -e 'DB_USER=dbuser' \
+    -e 'MONGODB_USER=dbuser' \
+    -e 'MONGODB_PASS=dbpass' \
+    juozasl/docker:dbhost
+```
+
+*If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*
+
+
 ## mongodb
 
 *Packages:*

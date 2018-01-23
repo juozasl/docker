@@ -14,6 +14,6 @@ docker build -t nagios:local nagios/
 
 docker build -t gemp:local gemp/
 
-
+docker build -t dbhost2:local dbhost2/
 
 

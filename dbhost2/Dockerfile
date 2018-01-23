@@ -1,4 +1,4 @@
-# Ubuntu 16.04, MongoDB 3.6, Mysql 5.7, PHP7.0-cli, snmpd, crons support;
+# Ubuntu 16.04, MongoDB 3.6, PHP7.0-cli, snmpd, crons support;
 
 FROM ubuntu:16.04
 

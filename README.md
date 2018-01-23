@@ -47,7 +47,7 @@ docker run --name=dbhost \
     -d -e 'DB_USER=dbuser' \
     -e 'MONGODB_USER=dbuser' \
     -e 'MONGODB_PASS=dbpass' \
-    juozasl/docker:dbhost
+    juozasl/docker:dbhost2
 ```
 
 *If you will not set 'MONGODB_USER' or 'MONGODB_PASS' your MongoDB server will be accessible without authentification.*

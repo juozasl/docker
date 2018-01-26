@@ -24,7 +24,7 @@ ADD set_mongo_auth.sh /set_mongo_auth.sh
 
 # ++ PHP7.0-cli install 
 
-RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-curl php7.0-zip php7.0-xmlrpc php7.0-xml php-mongodb curl
+RUN apt update && apt install -y php7.0-cli php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-curl php7.0-zip php7.0-xmlrpc php7.0-xml php7.0-intl php7.0-mbstring php-mongodb curl
 
 RUN sed -i 's/max_execution_time = 30/max_execution_time = 0/' /etc/php/7.0/cli/php.ini
 

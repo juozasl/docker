@@ -30,8 +30,8 @@ if [ ! -f /etc/cron.d/app ]; then
 fi
 
 # index file initialization if not exist
-if [ ! -f /var/www/app/web/index.php ]; then
-    echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
+if [ ! -f /var/www/app/public/index.php ]; then
+    echo "<?php echo 'container ...'; ?>" > /var/www/app/public/index.php
 fi
 
 # super visor deamons start

@@ -34,9 +34,9 @@ if [ -n "${DB_USER}" -o -n "${DB_NAME}" ]; then
         mysql \
             -e "CREATE DATABASE IF NOT EXISTS \`$db\` DEFAULT CHARACTER SET \`$MYSQL_CHARSET\` COLLATE \`$MYSQL_COLLATION\`;"
             if [ -n "${DB_USER}" ]; then
-            echo "Granting access to database \"$db\" for user \"${DB_USER}\"..."
+            echo "Granting access to all databases for user \"${DB_USER}\"..."
             mysql \
-            -e "GRANT ALL PRIVILEGES ON \`$db\`.* TO '${DB_USER}' IDENTIFIED BY '${DB_PASS}';"
+            -e "GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}' IDENTIFIED BY '${DB_PASS}';"
             fi
         done
 

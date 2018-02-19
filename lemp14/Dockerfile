@@ -19,7 +19,7 @@ VOLUME /var/lib/mysql
 ADD set_mysql_auth.sh /set_mysql_auth.sh
 
 # ++ www server install 
-RUN apt update && apt install -y nginx php5-fpm php5-cli php5-mysql php5-gd php5-mcrypt php5-mysql php5-xmlrpc php5-curl curl
+RUN apt update && apt install -y nginx php5-fpm php5-cli php5-mysql php5-gd php5-mcrypt php5-mbstring php5-mysql php5-xmlrpc php5-curl curl
 
 # ++ config
 RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php5/fpm/php.ini

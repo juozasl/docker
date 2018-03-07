@@ -2,8 +2,6 @@
 
 set -e
 
-NGINX_REALIP_PROXY=${NGINX_REALIP_PROXY:-"172.17.0.1"}
-
 # ++ Mysql
 
 # init mysql db if necessary
@@ -19,15 +17,6 @@ if [ ! -f /var/lib/mysql/.mysql_configured ]; then
     /set_mysql_auth.sh
 fi
 
-# ++ nginx & php-fpm
-
-mkdir -p /var/www/app/web/
-mkdir -p /var/www/log/
-chown -R www-data:www-data /var/www
-sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
-service php5-fpm start
-service php5-fpm stop
-
 # initialize snmpd.conf file if not exist
 if [ ! -f /etc/snmp/snmpd.conf ]; then
     echo "rocommunity public 127.0.0.1" > /etc/snmp/snmpd.conf
@@ -37,11 +26,6 @@ fi
 if [ ! -f /etc/cron.d/app ]; then
     touch /etc/cron.d/app
     chmod 0644 /etc/cron.d/app
-fi
-
-# index file initialization if not exist
-if [ ! -f /var/www/app/web/index.php ]; then
-    echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
 fi
 
 # super visor deamons start

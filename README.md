@@ -175,6 +175,32 @@ docker run --name=nagios \
 *Nagios admin username: nagiosadmin*
 
 
+## otrs
+
+*Packages:*
+
+Ubuntu 14.04, OTRS4, Mysql 5.7, Apache2, snmpd, crons support;
+
+*Sample command:*
+```
+docker run --name=otrs \
+    -v /home/mysql/:/var/lib/mysql \
+    -v /home/snmp/:/etc/snmp \
+    -v /home/cron/:/etc/cron.d \
+    -p 161:161 \
+    -p 80:80 \
+    -d -e 'DB_USER=otrs' \
+    -e 'DB_PASS=otrs' \
+    -e 'DB_NAME=local' \
+    juozasl/docker:otrs
+```
+
+*Defaults: DB_USER=otrs, DB_PASS=otrs, DB_NAME=local*
+
+*Then the container is runnig successfully you can activate the installer via link:* 
+
+http://hostname/otrs/installer.pl
+
 
 - - -
 

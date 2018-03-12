@@ -1,4 +1,4 @@
-# Ubuntu 14.04, OTRS4, Mysql 5.7, snmpd, crons support;
+# Ubuntu 14.04, OTRS 4.0.1, Mysql 5.7, snmpd, crons support;
 FROM ubuntu:14.04
 
 # ++ Supervisor install
@@ -35,7 +35,8 @@ VOLUME /etc/cron.d/
 RUN cd /opt/ && \
     wget \ 
     http://ftp.otrs.org/pub/otrs/otrs-4.0.1.tar.gz && \
-    tar -xzvf otrs-4.0.1.tar.gz
+    tar -xzvf otrs-4.0.1.tar.gz && \
+    rm otrs-4.0.1.tar.gz
 RUN cd /opt/ && mv otrs-4.0.1 otrs
 RUN apt update && apt install -y libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl \
 libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl \
@@ -62,6 +63,10 @@ RUN echo "AllowOverride All" >> /etc/apache2/sites-available/000-default.conf
 RUN echo "Require all granted" >> /etc/apache2/sites-available/000-default.conf
 RUN echo "</Directory>" >> /etc/apache2/sites-available/000-default.conf
 RUN echo "RedirectMatch ^/$ /otrs/" > /var/www/html/.htaccess
+
+# ++ make copy of init otrs dir
+VOLUME /opt/otrs
+RUN cd /opt/ && cp -rp otrs/ otrs_init/
 
 # ++ run all necessary daemons
 WORKDIR /opt/otrs

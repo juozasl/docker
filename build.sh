@@ -19,3 +19,5 @@ docker build -t dbhost2:local dbhost2/
 docker build -t lemp14:local lemp14/
 
 docker build -t otrs:local otrs/
+
+docker build -t vpn:local vpn/

@@ -179,7 +179,7 @@ docker run --name=nagios \
 
 *Packages:*
 
-Ubuntu 14.04, OTRS4, Mysql 5.7, Apache2, snmpd, crons support;
+Ubuntu 14.04, OTRS 4.0.1, Mysql 5.7, Apache2, snmpd, crons support;
 
 *Sample command:*
 ```
@@ -187,6 +187,7 @@ docker run --name=otrs \
     -v /home/mysql/:/var/lib/mysql \
     -v /home/snmp/:/etc/snmp \
     -v /home/cron/:/etc/cron.d \
+    -v /home/otrs/:/opt/otrs \
     -p 161:161 \
     -p 80:80 \
     -d -e 'DB_USER=otrs' \
@@ -200,6 +201,30 @@ docker run --name=otrs \
 *Then the container is runnig successfully you can activate the installer via link:* 
 
 http://hostname/otrs/installer.pl
+
+
+## vpn
+
+*Packages:*
+
+Ubuntu 16.04, strongswan 
+
+*Sample command:*
+```
+docker run --privileged --name=vpn \
+    -v /home/vpn/vpn-certs/:/vpn-certs \
+    -d -e 'HOST=192.168.0.1' \
+    -e 'USER=test' \
+    -e 'PASS=test' \
+    juozasl/docker:vpn
+```
+
+*Required: HOST*
+
+*Defaults: USER=test, PASS=test*
+
+*Client setup:* 
+
 
 
 - - -

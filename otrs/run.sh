@@ -2,6 +2,11 @@
 
 set -e
 
+# ++ init OTRS
+if [ ! -f /opt/otrs/RELEASE ]; then
+    cd /opt/ && cp -rp otrs_init/* otrs/
+fi
+
 # ++ Mysql
 
 # init mysql db if necessary

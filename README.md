@@ -227,7 +227,7 @@ docker run --privileged --name=vpn \
 
 *Client setup:* 
 
-
+https://github.com/juozasl/docker/tree/master/vpn/SETUP.md
 
 - - -
 

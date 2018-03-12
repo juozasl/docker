@@ -213,6 +213,8 @@ Ubuntu 16.04, strongswan
 ```
 docker run --privileged --name=vpn \
     -v /home/vpn/vpn-certs/:/vpn-certs \
+    -p 500:500/udp \
+    -p 4500:4500/udp \
     -d -e 'HOST=192.168.0.1' \
     -e 'USER=test' \
     -e 'PASS=test' \

@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 
 # ++ Supervisor install
 RUN apt update && apt install -y supervisor
-#COPY supervisor/* /etc/supervisor/conf.d/
+COPY supervisor/* /etc/supervisor/conf.d/
 
 # ++ packages install
 RUN apt update && \

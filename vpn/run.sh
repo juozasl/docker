@@ -25,7 +25,7 @@ if [ ! -f /vpn-certs/.config_done ]; then
         # ++ generate VPN server certs
         cd /vpn-certs/; ipsec pki --gen --type rsa --size 4096 --outform pem > vpn-server-key.pem
 
-        cd /vpn-certs/; ipsec pki --pub --in vpn-server-key.pem --type rsa | ipsec pki --issue --lifetime 1825 --cacert server-root-ca.pem --cakey server-root-key.pem --dn "C=US, O=VPN Server, CN='${HOST}'" --san '$HOST' --flag serverAuth --flag ikeIntermediate --outform pem > vpn-server-cert.pem
+        cd /vpn-certs/; ipsec pki --pub --in vpn-server-key.pem --type rsa | ipsec pki --issue --lifetime 1825 --cacert server-root-ca.pem --cakey server-root-key.pem --dn "C=US, O=VPN Server, CN=${HOST}" --san ${HOST} --flag serverAuth --flag ikeIntermediate --outform pem > vpn-server-cert.pem
 
         # ++ copy certs
         cd /vpn-certs/; cp ./vpn-server-cert.pem /etc/ipsec.d/certs/vpn-server-cert.pem

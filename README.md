@@ -44,8 +44,7 @@ docker run --name=dbhost \
     -p 21017:27017 \
     -p 3306:3306 \
     -p 161:161 \
-    -d -e 'DB_USER=dbuser' \
-    -e 'MONGODB_USER=dbuser' \
+    -d -e 'MONGODB_USER=dbuser' \
     -e 'MONGODB_PASS=dbpass' \
     juozasl/docker:dbhost2
 ```

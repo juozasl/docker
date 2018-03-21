@@ -30,17 +30,25 @@ if [ ! -f /etc/cron.d/app ]; then
 fi
 
 if [ -d /var/www/app/web ]; then
+
+    cp /etc/nginx/sites-available/default_yii2 /etc/nginx/sites-available/default
+
     # index file initialization if not exist
     if [ ! -f /var/www/app/web/index.php ]; then
         echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
     fi
+
 fi
 
 if [ -d /var/www/app/public ]; then
+
+    cp /etc/nginx/sites-available/default_laravel /etc/nginx/sites-available/default
+
     # index file initialization if not exist
     if [ ! -f /var/www/app/public/index.php ]; then
         echo "<?php echo 'container ...'; ?>" > /var/www/app/public/index.php
     fi
+
 fi
 
 # super visor deamons start

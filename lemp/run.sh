@@ -39,9 +39,18 @@ if [ ! -f /etc/cron.d/app ]; then
     chmod 0644 /etc/cron.d/app
 fi
 
-# index file initialization if not exist
-if [ ! -f /var/www/app/web/index.php ]; then
-    echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
+if [ -d /var/www/app/web ]; then
+    # index file initialization if not exist
+    if [ ! -f /var/www/app/web/index.php ]; then
+        echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
+    fi
+fi
+
+if [ -d /var/www/app/public ]; then
+    # index file initialization if not exist
+    if [ ! -f /var/www/app/public/index.php ]; then
+        echo "<?php echo 'container ...'; ?>" > /var/www/app/public/index.php
+    fi
 fi
 
 # super visor deamons start

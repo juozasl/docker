@@ -106,6 +106,7 @@ docker run --name=lemp \
     -e 'DB_PASS=dbpass' \
     -e 'DB_NAME=dbname' \
     -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    -e 'FRAMEWORK=laravel' \
     juozasl/docker:lemp
 ```
 
@@ -129,6 +130,7 @@ docker run --name=lemp14 \
     -e 'DB_PASS=dbpass' \
     -e 'DB_NAME=dbname' \
     -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    -e 'FRAMEWORK=laravel' \
     juozasl/docker:lemp14
 ```
 
@@ -153,6 +155,7 @@ docker run --name=gemp \
     -d -e 'MONGODB_USER=dbuser' \
     -e 'MONGODB_PASS=dbpass' \
     -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    -e 'FRAMEWORK=laravel' \
     juozasl/docker:gemp
 ```
 

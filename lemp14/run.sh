@@ -39,31 +39,27 @@ if [ ! -f /etc/cron.d/app ]; then
     chmod 0644 /etc/cron.d/app
 fi
 
-if [ $FRAMEWORK -eq 'yii2' ]
-then
+if [ "$FRAMEWORK" == "yii2" ]; then
 
     mkdir -p /var/www/app/web/
 
     cp /etc/nginx/sites-available/default_yii2 /etc/nginx/sites-available/default
 
     # index file initialization if not exist
-    if [ ! -f /var/www/app/web/index.php ] 
-    then
+    if [ ! -f /var/www/app/web/index.php ]; then
         echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
     fi
 
 fi
 
-if [ $FRAMEWORK -eq 'laravel' ]
-then
+if [ "$FRAMEWORK" == "laravel" ]; then
 
     mkdir -p /var/www/app/public/
 
     cp /etc/nginx/sites-available/default_laravel /etc/nginx/sites-available/default
 
     # index file initialization if not exist
-    if [ ! -f /var/www/app/public/index.php ]
-    then
+    if [ ! -f /var/www/app/public/index.php ]; then
         echo "<?php echo 'container ...'; ?>" > /var/www/app/public/index.php
     fi
 

@@ -6,7 +6,6 @@ NGINX_REALIP_PROXY=${NGINX_REALIP_PROXY:-"172.17.0.1"}
 
 # ++ create dirs
 
-mkdir -p /var/www/app/web/
 mkdir -p /var/www/log/
 
 # ++ permissions
@@ -21,8 +20,31 @@ service php7.0-fpm start
 service php7.0-fpm stop
 
 # index file initialization if not exist
-if [ ! -f /var/www/app/web/index.php ]; then
-    echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
+
+if [ "$FRAMEWORK" == "yii2" ]; then
+
+    mkdir -p /var/www/app/web/
+
+    cp /etc/nginx/sites-available/default_yii2 /etc/nginx/sites-available/default
+
+    # index file initialization if not exist
+    if [ ! -f /var/www/app/web/index.php ]; then
+        echo "<?php echo 'container ...'; ?>" > /var/www/app/web/index.php
+    fi
+
+fi
+
+if [ "$FRAMEWORK" == "laravel" ]; then
+
+    mkdir -p /var/www/app/public/
+
+    cp /etc/nginx/sites-available/default_laravel /etc/nginx/sites-available/default
+
+    # index file initialization if not exist
+    if [ ! -f /var/www/app/public/index.php ]; then
+        echo "<?php echo 'container ...'; ?>" > /var/www/app/public/index.php
+    fi
+
 fi
 
 # super visor deamons start

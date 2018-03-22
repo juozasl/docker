@@ -29,6 +29,8 @@ if [ ! -f /etc/cron.d/app ]; then
     chmod 0644 /etc/cron.d/app
 fi
 
+# index file initialization if not exist
+
 if [ "$FRAMEWORK" == "yii2" ]; then
 
     mkdir -p /var/www/app/web/

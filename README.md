@@ -83,6 +83,7 @@ docker run --name=phpapp \
     -v /home/log/:/var/www/log \
     -p 80:80 \
     -d -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    -e 'FRAMEWORK=laravel' \
     juozasl/docker:phpapp
 ```
 

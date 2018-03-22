@@ -24,7 +24,8 @@ RUN apt update && apt install -y nginx php5-fpm php5-cli php5-mysql php5-gd php5
 # ++ config
 RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php5/fpm/php.ini
 RUN sed -i 's/max_execution_time = 30/max_execution_time = 0/' /etc/php5/cli/php.ini
-COPY default /etc/nginx/sites-available/default
+COPY default_yii2 /etc/nginx/sites-available/default_yii2
+COPY default_laravel /etc/nginx/sites-available/default_laravel
 
 # ++ volumes
 VOLUME /var/www/app/

@@ -12,7 +12,8 @@ RUN apt update && apt install -y nginx php7.0-fpm php7.0-zip php7.0-xmlrpc php7.
 
 # ++ config
 RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php/7.0/fpm/php.ini
-COPY default /etc/nginx/sites-available/default
+COPY default_yii2 /etc/nginx/sites-available/default_yii2
+COPY default_laravel /etc/nginx/sites-available/default_laravel
 
 # ++ volumes
 VOLUME /var/www/app/

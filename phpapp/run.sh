@@ -3,6 +3,7 @@
 set -e
 
 NGINX_REALIP_PROXY=${NGINX_REALIP_PROXY:-"172.17.0.1"}
+FRAMEWORK=${FRAMEWORK:-"yii2"}
 
 # ++ create dirs
 

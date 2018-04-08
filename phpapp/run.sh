@@ -13,9 +13,6 @@ mkdir -p /var/www/log/
 
 chown -R www-data:www-data /var/www
 
-# ++ config real ip proxy
-sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
-
 # initialize required files
 service php7.0-fpm start
 service php7.0-fpm stop
@@ -47,6 +44,9 @@ if [ "$FRAMEWORK" == "laravel" ]; then
     fi
 
 fi
+
+# ++ config real ip proxy
+sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
 
 # super visor deamons start
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

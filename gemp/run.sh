@@ -4,6 +4,7 @@ set -e
 
 NGINX_REALIP_PROXY=${NGINX_REALIP_PROXY:-"172.17.0.1"}
 FRAMEWORK=${FRAMEWORK:-"yii2"}
+UPLOAD_SIZE=${UPLOAD_SIZE:-"20M"}
 
 # configure mongo authentification
 if [ ! -f /var/lib/mongodb/.mongodb_configured ]; then
@@ -58,6 +59,11 @@ if [ "$FRAMEWORK" == "laravel" ]; then
 fi
 
 sed -i 's/set_real_ip_from 0.0.0.0;/set_real_ip_from '$NGINX_REALIP_PROXY';/' /etc/nginx/sites-available/default
+
+# upload size config
+sed -i 's/client_max_body_size 0;/client_max_body_size '$UPLOAD_SIZE';/' /etc/nginx/nginx.conf
+sed -i 's/post_max_size = 8M/post_max_size = '$UPLOAD_SIZE'/' /etc/php/7.0/fpm/php.ini
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = '$UPLOAD_SIZE'/' /etc/php/7.0/fpm/php.ini
 
 # super visor deamons start
 exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf

@@ -157,6 +157,7 @@ docker run --name=gemp \
     -e 'MONGODB_PASS=dbpass' \
     -e 'NGINX_REALIP_PROXY=172.17.0.1 \
     -e 'FRAMEWORK=laravel' \
+    -e 'UPLOAD_SIZE=20M' \
     juozasl/docker:gemp
 ```
 

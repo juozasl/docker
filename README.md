@@ -158,6 +158,7 @@ docker run --name=gemp \
     -e 'NGINX_REALIP_PROXY=172.17.0.1 \
     -e 'FRAMEWORK=laravel' \
     -e 'UPLOAD_SIZE=20M' \
+    -e 'EXECUTION_TIME=120' \
     juozasl/docker:gemp
 ```
 

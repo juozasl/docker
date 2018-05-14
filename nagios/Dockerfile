@@ -22,7 +22,9 @@ RUN apt update && apt install -y \
     iputils-ping \
     libnet-snmp-perl \
     snmp \
-    snmp-mibs-downloader
+    snmp-mibs-downloader \
+    libwww-perl \
+    libcrypt-ssleay-perl
 
 RUN useradd nagios && \
     groupadd nagcmd && \
@@ -63,6 +65,7 @@ ADD files/check_snmp_extend.sh /usr/local/nagios/libexec/check_snmp_extend.sh
 ADD files/check_snmp_load.pl /usr/local/nagios/libexec/check_snmp_load.pl
 ADD files/check_snmp_mem.pl /usr/local/nagios/libexec/check_snmp_mem.pl
 ADD files/check_snmp_storage.pl /usr/local/nagios/libexec/check_snmp_storage.pl
+ADD files/slack_nagios.pl /usr/local/bin/slack_nagios.pl
 
 ADD files/checksupervisor.sh /usr/local/nagios/libexec/checksupervisor.sh
 
@@ -79,6 +82,7 @@ RUN a2enmod rewrite && a2enmod cgi
 
 RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 ADD files/localhost.cfg /usr/local/nagios/etc/objects/localhost.cfg
+ADD files/slack_nagios.cfg /usr/local/nagios/etc/servers/slack_nagios.cfg
 RUN cp -r /usr/local/nagios/etc/ /usr/local/nagios/etc1/
 
 RUN rm /var/www/html/index.html

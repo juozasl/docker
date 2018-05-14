@@ -166,7 +166,7 @@ docker run --name=gemp \
 
 *Packages:*
 
-Ubuntu 16.04, Nagios 4.3.4, Nagios-Plugins 2.2.1, Apache2
+Ubuntu 16.04, Nagios 4.3.4, Nagios-Plugins 2.2.1, Apache2, #slack integration
 
 *Sample command:*
 ```
@@ -175,6 +175,9 @@ docker run --name=nagios \
     -p 80:80 \
     -d -e 'ADMIN_EMAIL=admin@localhost' \
     -e 'NAGIOS_PASS=password' \
+    -e 'SLACK_DOMAIN=yourteamurl.slack.com' \
+    -e 'SLACK_TOKEN=slack_token' \
+    -e 'SLACK_CHANNEL=alerts' \
     juozasl/docker:nagios
 ```
 *Nagios admin username: nagiosadmin*

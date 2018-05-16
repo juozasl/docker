@@ -87,6 +87,23 @@ docker run --name=phpapp \
     juozasl/docker:phpapp
 ```
 
+## phpapp18
+
+*Packages:*
+
+Ubuntu 18.04, Nginx, PHP7.2, php-mongodb, php-mysql, snmpd.
+
+*Sample command:*
+```
+docker run --name=phpapp \
+    -v /home/app/:/var/www/app \
+    -v /home/log/:/var/www/log \
+    -p 80:80 \
+    -d -e 'NGINX_REALIP_PROXY=172.17.0.1 \
+    -e 'FRAMEWORK=laravel' \
+    juozasl/docker:phpapp18
+```
+
 ## lemp
 
 *Packages:*

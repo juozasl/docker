@@ -8,6 +8,8 @@ docker build -t dbhost:local dbhost/
 
 docker build -t phpapp:local phpapp/
 
+docker build -t phpapp18:local phpapp18/
+
 docker build -t lemp:local lemp/
 
 docker build -t nagios:local nagios/

@@ -26,12 +26,14 @@ if [ -n "${MONGODB_USER}" -a -n "${MONGODB_PASS}" ]; then
 
     echo "=> Done!"
 
-    # ++ add authentication config to mongo config file
-    sed -i 's/#security:/security:\n  authorization: "enabled"/' /etc/mongod.conf
-
     # ++ stop temporary mongodb process
     mongod --dbpath /var/lib/mongodb/ --shutdown
     
+else
+
+    # disable authorization
+    sed -i 's/authorization: "enabled"/authorization: "disabled"/' /etc/mongod.conf
+
 fi
 
 echo  "done" > /var/lib/mongodb/.mongodb_configured

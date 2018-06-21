@@ -50,6 +50,13 @@ RUN apt update && apt install -y cron run-one
 RUN touch /etc/cron.d/app
 RUN chmod 0644 /etc/cron.d/app
 
+# -- php runkit extension install
+RUN apt update && apt install -y git gcc php-pear php5-dev
+RUN cd /tmp/ && git clone https://github.com/zenovich/runkit.git
+RUN cd /tmp/runkit/ && pecl install package.xml
+RUN sh -c 'echo "extension=runkit.so" >> /etc/php5/mods-available/runkit.ini'
+RUN php5enmod runkit
+
 VOLUME /etc/cron.d/
 
 WORKDIR /var/www/app

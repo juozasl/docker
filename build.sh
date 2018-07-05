@@ -25,3 +25,5 @@ docker build -t lemp14:local lemp14/
 docker build -t otrs:local otrs/
 
 docker build -t vpn:local vpn/
+
+docker build -t jenkins:local jenkins/

@@ -281,6 +281,22 @@ docker run --privileged --name=vpn \
 
 https://github.com/juozasl/docker/tree/master/vpn/SETUP.md
 
+
+## jenkins
+
+*Packages:*
+
+Jenkins LTS, Windos Slaves Plugin.
+
+*Sample command:*
+```
+docker run --name=jenkins \
+    -v /home/jenkins/:/var/jenkins_home/ \
+    -p 8080:8080 \
+    -p 50000:0000 \
+    -d juozasl/docker:jenkins
+```
+
 - - -
 
 

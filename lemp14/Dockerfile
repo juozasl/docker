@@ -19,7 +19,7 @@ VOLUME /var/lib/mysql
 ADD set_mysql_auth.sh /set_mysql_auth.sh
 
 # ++ www server install 
-RUN apt update && apt install -y nginx php5-fpm php5-cli php5-mysql php5-gd php5-mcrypt php5-mysql php5-xmlrpc php5-curl curl
+RUN apt update && apt install -y nginx php5-fpm php5-cli php5-mysql php5-gd php5-mcrypt php5-mysql php5-xmlrpc php5-curl curl pdftk
 
 # ++ config
 RUN sed -i 's/;cgi.fix_pathinfo/cgi.fix_pathinfo/' /etc/php5/fpm/php.ini
@@ -50,7 +50,7 @@ RUN apt update && apt install -y cron run-one
 RUN touch /etc/cron.d/app
 RUN chmod 0644 /etc/cron.d/app
 
-# -- php runkit extension install
+# ++ php runkit extension install
 RUN apt update && apt install -y git gcc php-pear php5-dev
 RUN cd /tmp/ && git clone https://github.com/zenovich/runkit.git
 RUN cd /tmp/runkit/ && pecl install package.xml

@@ -13,19 +13,21 @@ RUN apt update && \
     strongswan \
     strongswan-plugin-eap-mschapv2 \
     moreutils \
-    iptables
+    iptables \
+    iputils-ping \
+    mc
 
-# ++ sertifikatu direktorijos sukurimas
+# ++ make certificates dirs
 RUN mkdir -p /vpn-certs/
 WORKDIR /vpn-certs/
 VOLUME /vpn-certs
 
 # ++ copy ipsec config
-COPY files/ipsec.conf /etc/ipsec.conf
-RUN chmod 644 /etc/ipsec.conf
-RUN chown root:root /etc/ipsec.conf
+COPY files/ipsec_template.conf /etc/ipsec_template.conf
+RUN chmod 644 /etc/ipsec_template.conf
+RUN chown root:root /etc/ipsec_template.conf
 
-# ++ portu exposinimas
+# ++ expose ports
 EXPOSE 500/udp
 EXPOSE 4500/udp
 

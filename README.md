@@ -270,12 +270,13 @@ docker run --privileged --name=vpn \
     -d -e 'HOST=192.168.0.1' \
     -e 'USER=test' \
     -e 'PASS=test' \
+    -e 'SUBNET=10.10.10' \
     juozasl/docker:vpn
 ```
 
 *Required: HOST*
 
-*Defaults: USER=test, PASS=test*
+*Defaults: USER=test, PASS=test, SUBNET=10.10.10*
 
 *Client setup:* 
 
